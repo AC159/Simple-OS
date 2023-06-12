@@ -1,7 +1,18 @@
-; Simple boot sector that loops forever
+; Simple boot sector that prints characters to the screen and loops forever
 
-loop:
-    jmp loop ; jump to the address of the current instruction
+mov ah, 0xe ; load register ah with the # of the 'print char' subfunction
+mov al, 'H' ; write ASCII code that we want to print in register al
+int 0x10    ; interrupt the CPU 
+mov al, 'e'
+int 0x10
+mov al, 'l'
+int 0x10
+mov al, 'l'
+int 0x10
+mov al, 'o'
+int 0x10
+
+jmp $; jump to the address of the current instruction
 
 ; $ represents the address of the current instruction and
 ; $$ is the address of the beginning of the current section
