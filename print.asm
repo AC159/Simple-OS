@@ -16,7 +16,7 @@ jmp $ ; Hang
 
 ; Data
 HELLO_MSG:
-db 'Hello world!\n', 0 ; <-- The zero on the end tells our routine
+db 'Hello world!', 0 ; <-- The zero on the end tells our routine
                        ; when to stop printing characters.
 
 GOODBYE_MSG:

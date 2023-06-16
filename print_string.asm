@@ -2,6 +2,7 @@
 ; register bx
 
 print_string:
+push ax ; push the contents of register ax onto the stack before using it
 mov ah, 0x0e
 
 print:
@@ -15,4 +16,5 @@ inc bx ; increment the address by a byte to point to the next character
 jmp print
 
 end:
+pop ax ; replace the original contents of register ax
 ret
