@@ -5,6 +5,8 @@ mov ah, 0x0e ; scrolling teletype BIOS routine
 mov bp, 0x8000 ; set the base of the stack
 mov sp, bp
 
+; These characters are pushed as 16-bit values
+; The most significant byte will be added by the assembler as 0x00
 push 'A'
 push 'B'
 push 'C'
