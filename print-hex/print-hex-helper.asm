@@ -1,10 +1,5 @@
-; Boot sector that prints a 2 byte hex number as a string
-
-[ org 0x7c00 ]
-
-; the hex values must be capital letters
-mov dx, 0xffff ; store the value to print in dx
-call print_hex ; call the function
+; Helper routine that prints a 2 byte hex number as a string
+; The hex value to print must be located in register dx
 
 ; prints the value of DX as hex.
 print_hex:
@@ -63,15 +58,9 @@ mov byte[HEX_OUT + 5], al
 
 print_str:
 mov bx, HEX_OUT ; print the string pointed to by BX
-call print_string
-jmp $
-
-%include "print_string_helper.asm"
+call print_string ; the caller must inclue the print_string_helper.asm function
+ret
 
 ; global variables
 HEX_OUT:
 db '0x0000', 0
-
-; Padding and magic number to tell the BIOS that this is a valid boot sector
-times 510 - ( $ - $$ ) db 0
-dw 0xaa55
