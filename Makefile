@@ -15,7 +15,7 @@ run: all
 
 # Actual disk image that the computer loads which is a combination of the 
 # compiled boot sector and kernel
-os-image.bin: boot/boot-sect.bin kernel.bin
+os-image.bin: boot/boot-sector.bin kernel.bin
 	cat  $^ > os-image.bin
 
 # Link kernel object files into one binary, making sure the
@@ -32,12 +32,12 @@ kernel.bin: kernel/kernel-entry.o ${OBJ}
 %.o: %.asm
 	nasm $< -f elf -o $@
 
-boot-sect.bin: boot/boot-sector.asm
-	nasm boot/boot-sector.asm -i ./ -f bin -o boot/boot-sect.bin
+%.bin: %.asm
+	nasm $< -f bin -o $@
 
 clean:
-	rm -fr *.bin *.o *.dis *.map
-	rm -fr kernel/*.o boot/*.bin drivers/*.o
+	rm -rf *.bin *.dis *.o os-image.bin
+	rm -rf kernel/*.o boot/*.bin drivers/*.o boot/*.o
 
 # Disassemble kernel for debugging
 kernel.dis: kernel/kernel.bin

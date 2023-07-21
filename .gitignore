@@ -1,7 +1,5 @@
 /build
-/c-compilation/*.bin
-/c-compilation/*.o
-/c-compilation/*.dis
 
-/executing-kernel-code/*.bin
-/executing-kernel-code/*.o
+*.bin
+*.o
+*.dis
