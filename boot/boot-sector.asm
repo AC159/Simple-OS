@@ -19,12 +19,12 @@ call switch_to_pm ; Switch to protected mode, from which
 jmp $
 
 ; Include utility routines
-%include "../print-str/print_string_helper.asm"
-%include "../print-str/print-nl.asm"
-%include "../read-disk-routine.asm"
-%include "../gdt.asm"
-%include "../vga-print.asm"
-%include "../switch_to_pm.asm"
+%include "boot/print-str/print_string_helper.asm"
+%include "boot/print-str/print-nl.asm"
+%include "boot/read-disk-routine.asm"
+%include "boot/gdt.asm"
+%include "boot/vga-print.asm"
+%include "boot/switch_to_pm.asm"
 
 [bits 16]
 
